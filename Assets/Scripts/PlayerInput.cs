@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -28,12 +29,51 @@ public class PlayerInput : MonoBehaviour
     #endregion Data types and variables
 
     private Camera playerCamera;
+    public Flip leftFlipper;
+    public Flip rightFlipper;
 
+    private const string leftFlipperName = "LeftFlipper";
+    private const string rightFlipperName = "RightFlipper";
+
+    #region Unity methods
     //Functions/Methods
     //Access modifier, return datatype, method name, parameters
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         playerCamera = Camera.main; // Camera.main uses find object whit tag internally, super rude.
+        leftFlipper = GetFlipper(leftFlipperName);
+        Assert.IsNotNull(leftFlipper, string.Format("Child: {0} was not found!", leftFlipperName));
+        rightFlipper = GetFlipper(rightFlipperName);
+        Assert.IsNotNull(rightFlipper, string.Format("Child: {0} was not found!", rightFlipperName));
+    }
+
+    private void OnDestroy()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void Update()
+    {
+        float xPosition = playerCamera.ScreenToWorldPoint(Input.mousePosition).x;
+        transform.position = new Vector3(xPosition, transform.position.y, transform.position.z);
+
+        leftFlipper.isPressed = Input.GetMouseButton(0);
+        rightFlipper.isPressed = Input.GetMouseButton(1);
+    }
+    #endregion Unity methods
+
+    //private Flip GetFlipper(Input input)
+    private Flip GetFlipper(string flipperName)
+    {
+        //Transform flipperTransfrom = transform.Find(flipperName);
+        //Assert.IsNotNull(flipperTransfrom, string.Format("Child: {0} was not found!", flipperName));
+        //Flip flipper = flipperTransfrom.GetComponent<Flip>();
+        //Assert.IsNotNull(flipper, string.Format("Child: {0} missing Flip script!", flipperName));
+
+        return transform.Find(flipperName)?.GetComponent<Flip>();
     }
 
 }
