@@ -62,6 +62,7 @@ public class PlayerInput : MonoBehaviour
 
         leftFlipper.isPressed = Input.GetMouseButton(0);
         rightFlipper.isPressed = Input.GetMouseButton(1);
+        
     }
     #endregion Unity methods
 

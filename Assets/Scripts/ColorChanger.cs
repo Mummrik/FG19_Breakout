@@ -2,42 +2,34 @@
 
 public class ColorChanger : MonoBehaviour
 {
-    Color color;
-    public bool ChangeBG = false;
+    SpriteRenderer flipperLeft;
+    SpriteRenderer flipperRight;
+    Color c1;
+    Color c2;
+    float count;
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Awake()
     {
-        if (ChangeBG)
-        {
-            Camera.main.backgroundColor = randomColor((byte)Random.Range(1, 6));
-        }
+        flipperLeft = GameObject.Find("LeftFlipper/flipper")?.GetComponent<SpriteRenderer>();
+        flipperRight = GameObject.Find("RightFlipper/flipper")?.GetComponent<SpriteRenderer>();
+        c1 = new Color(Random.value, Random.value, Random.value);
+        c2 = new Color(Random.value, Random.value, Random.value);
     }
 
-    Color randomColor(byte rndColor)
+    // Update is called once per frame
+    void Update()
     {
-        switch (rndColor)
+        count += Time.deltaTime * 1;
+        flipperLeft.color = Color.Lerp(c1, c2, count);
+        flipperRight.color = Color.Lerp(c1, c2, count);
+
+        if (count >= 1)
         {
-            case 1:
-                color = Color.green;
-                break;
-            case 2:
-                color = Color.red;
-                break;
-            case 3:
-                color = Color.blue;
-                break;
-            case 4:
-                color = Color.cyan;
-                break;
-            case 5:
-                color = Color.magenta;
-                break;
-            case 6:
-                color = Color.yellow;
-                break;
+            count = 0;
+            c1 = flipperLeft.color;
+            c2 = new Color(Random.value, Random.value, Random.value);
         }
-        return color;
+
     }
 
 }
