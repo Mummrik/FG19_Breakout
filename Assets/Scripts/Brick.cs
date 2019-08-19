@@ -24,6 +24,9 @@ public class Brick : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         Assert.IsNotNull(spriteRenderer, "Failed to find SpriteRenderer component!");
 
+        sprites.Add(Resources.Load("Art/brick") as Sprite);
+        sprites.Add(Resources.Load("Art/brick_broken") as Sprite);
+
         //cam = Camera.main;
         //centerPos = cam.transform.position;
     }
