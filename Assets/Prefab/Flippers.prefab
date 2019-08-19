@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5816349902682633835}
   - component: {fileID: 5816349902682633828}
   - component: {fileID: 5816349902682633829}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: flipper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5816349903186565625}
   - component: {fileID: 5816349903186565626}
-  m_Layer: 0
+  - component: {fileID: 1665125003}
+  m_Layer: 9
   m_Name: Flippers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 5816349903186565627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 5816349903912938772}
   - {fileID: 5816349903692218550}
@@ -183,6 +184,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftFlipper: {fileID: 0}
   rightFlipper: {fileID: 0}
+--- !u!114 &1665125003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5816349903186565627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92922c5045236694aadd78409f9093c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5816349903490176969
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +208,7 @@ GameObject:
   - component: {fileID: 5816349903490176973}
   - component: {fileID: 5816349903490176974}
   - component: {fileID: 5816349903490176975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: flipper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +344,7 @@ GameObject:
   - component: {fileID: 5816349903692218555}
   - component: {fileID: 5816349903692218548}
   - component: {fileID: 5816349903692218549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightFlipper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +385,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &5816349903692218548
 HingeJoint2D:
@@ -383,7 +396,7 @@ HingeJoint2D:
   m_GameObject: {fileID: 5816349903692218551}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 5816349902682633828}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -393,7 +406,7 @@ HingeJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 1000
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -90
@@ -424,7 +437,7 @@ GameObject:
   - component: {fileID: 5816349903912938778}
   - component: {fileID: 5816349903912938779}
   - component: {fileID: 5816349903912938777}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftFlipper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +478,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &5816349903912938779
 HingeJoint2D:
@@ -476,7 +489,7 @@ HingeJoint2D:
   m_GameObject: {fileID: 5816349903912938773}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 5816349903490176974}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -486,7 +499,7 @@ HingeJoint2D:
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 1000
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: 0
