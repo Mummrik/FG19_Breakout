@@ -31,7 +31,7 @@ public class CameraShake : MonoBehaviour
 
     private IEnumerator PerformShake()
     {
-        transform.position = originalPosition;
+        //transform.position = originalPosition;
         float elapsedTime = 0f;
         while (elapsedTime < shakeDuration)
         {

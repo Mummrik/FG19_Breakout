@@ -15,25 +15,23 @@ public class Brick : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private static Camera cam;
-
-    private bool isColliding = false;
-    private Vector3 centerPos;
+    //private static Camera cam;
+    //private bool isColliding = false;
+    //private Vector3 centerPos;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         Assert.IsNotNull(spriteRenderer, "Failed to find SpriteRenderer component!");
 
-        cam = Camera.main;
-        centerPos = cam.transform.position;
+        //cam = Camera.main;
+        //centerPos = cam.transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (causeCameraShake == true)
         {
-            //TODO: Create shake camera
             //StartCoroutine(ShakeCamera(cam));
             GameCamera.instance.cameraShake.Shake();
 
@@ -55,14 +53,14 @@ public class Brick : MonoBehaviour
         }
     }
 
-    IEnumerator ShakeCamera(Camera camera)
-    {
-        Vector3 curPos = centerPos;
-        for (int i = 1; i <= 2f; i++)
-        {
-            camera.transform.position = new Vector3(curPos.x + (i * 0.05f), curPos.y + (i * 0.05f), curPos.z);
-            yield return new WaitForEndOfFrame();
-        }
-        camera.transform.position = centerPos;
-    }
+    //IEnumerator ShakeCamera(Camera camera)
+    //{
+    //    Vector3 curPos = centerPos;
+    //    for (int i = 1; i <= 2f; i++)
+    //    {
+    //        camera.transform.position = new Vector3(curPos.x + (i * 0.05f), curPos.y + (i * 0.05f), curPos.z);
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //    camera.transform.position = centerPos;
+    //}
 }
